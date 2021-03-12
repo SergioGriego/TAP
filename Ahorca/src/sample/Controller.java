@@ -22,6 +22,7 @@ public class Controller {
     TextField[] arrayTxt = null;
     ImageView[] arrayImg = new ImageView[6];
     int intentos=6;
+    int cont=0;
 
     @FXML
     protected void initialize() {
@@ -47,6 +48,13 @@ public class Controller {
                         System.out.println("CORRECTO" + textField.getId());
                         System.out.println("Has Ganado");
                         textField.setDisable(true);
+                        ++cont;
+                        if(cont==palabra.length()){
+                            Alert alerta=new Alert(Alert.AlertType.INFORMATION);
+                            alerta.setTitle("FELICIDADES");
+                            alerta.setContentText("Has Ganado con la palabra "+palabra);
+                            alerta.show();
+                        }
                     } else {
                         System.out.println("INCORRECTO" + textField.getId());
                         textField.setText("");
